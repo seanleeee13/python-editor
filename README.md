@@ -20,11 +20,11 @@ This file is for pyinstaller, a program that I use to make .py file into .exe fi
 
 If you have python on your computer, yes. This program downloads `keyboard` module on your python.
 
-### I don`t like downloading `keyboard` module. How can I do?
+### I don't like downloading `keyboard` module. How can I do?
 
 You can use `python_editor_nok/python_editor_nok.py` file and `python_editor_nok/python_editor_nok.exe` file.
 
-### I used `python_editor_nok.py` file and it didn`t work. What is happening?
+### I used `python_editor_nok.py` file and it didn't work. What is happening?
 
 If you do not have `keyboard` module on python, it will not work.
 
