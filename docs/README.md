@@ -2,19 +2,28 @@
 
 This project is command prompt python editor.
 
-## How to use
+## How To Use
 
 You can download `python_editor.exe` file and use it. If you have python on your computer, you can download `python_editor.py` file and use it, too.
 
 ## Updates
 
-While updating, I make codes on python file, and when update is finished, I make it into .exe file with `build.bat` file.
+While updating, I make codes on python file, and when update is finished, I make it into `.exe` file with `build.bat` file.
+
+## File Information
+
+- `dist/python_editor.exe`: It is `.exe` file for use.
+- `docs` folder and its files: It is documents for this program.
+- `src/python_editor.py`: It is a main python file.
+- `src/python_editor_k.py`: It is similar with `src/python_editor.py`, but it doesn't downloads `keyboard` module. See FAQ for more information.
+- `utils/build.bat`: It is file I use to make `.py` files into `exe` file.
+- `utils/python_editor_k.spec`: It is a file for `pyinstaller`. See FAQ for more information.
 
 ## FAQ
 
-### What is .spec files?
+### What is `.spec` file?
 
-This file is for pyinstaller, a program that I use to make .py file into .exe file.
+This file is for `pyinstaller`, a program that I use to make `.py` file into `.exe` file.
 
 ### Does it downloads something in my computer?
 
