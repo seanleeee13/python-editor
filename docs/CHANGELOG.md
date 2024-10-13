@@ -1,6 +1,6 @@
 # python-editor change log
 
-## v.1.1.2 (in development)
+## v.1.1.2
 
 - Save, load error debugged
 - Error exception added

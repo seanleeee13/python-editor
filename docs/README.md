@@ -1,4 +1,4 @@
-# python-editor v.1.1.2a1
+# python-editor v.1.1.2
 
 This project is command prompt python editor.
 
@@ -31,7 +31,7 @@ If you have python on your computer, yes. This program downloads `keyboard` modu
 
 ### I don't like downloading `keyboard` module. How can I do?
 
-You can use `python_editor_k.py` file and `python_editor.exe` file.
+You can use `python_editor.exe` file.
 
 ### I used `python_editor_k.py` file and it didn't work. What is happening?
 
@@ -39,6 +39,6 @@ If you do not have `keyboard` module on python, it will not work.
 
 Solutions:
 
-1. Use `python_editor.exe` file.
-2. Download `keyboard` module with `python -m pip install keyboard`.
-3. Use `python_editor.py` file. (downloads `keyboard` module on your computer)
+1. Use `python_editor.exe` file. (Recommanded)
+2. Download `keyboard` module with `python -m pip install keyboard`. (If you are OK with downloading keyboard)
+3. Use `python_editor.py` file. (If you are OK with downloading keyboard)

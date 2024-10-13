@@ -2,7 +2,7 @@ try:
     __import__("subprocess").run("python -m pip install keyboard", shell=True, stdout=__import__("subprocess").DEVNULL)
     code = []
     line = 1
-    cmdpye_version = "v.1.1.2a1"
+    cmdpye_version = "v.1.1.2"
     print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
     print("Write 'help' for help.")
     while True:
@@ -38,7 +38,7 @@ try:
                 pass
             code = []
             line = 1
-            cmdpye_version = "v.1.1.2a1"
+            cmdpye_version = "v.1.1.2"
         elif line_in == "new":
             code = []
             line = 1
