@@ -1,7 +1,7 @@
 try:
     code = []
     line = 1
-    cmdpye_version = "v.1.1.2"
+    cmdpye_version = "v.1.1.3"
     print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
     print("Write 'help' for help.")
     while True:
@@ -127,9 +127,32 @@ Write 'exit' to exit
         else:
             code[line - 1] = line_in
             line += 1
+            indent_space = 0
+            while True:
+                try:
+                    if line_in[indent_space] == " ":
+                        indent_space += 1
+                    else:
+                        break
+                except:
+                    indent_space = 0
+                    break
+            if len(code) < line:
+                if line_in and line_in[-1] == ":":
+                    try:
+                        __import__("keyboard").write((indent_space + 4) * " ")
+                    except:
+                        raise ModuleNotFoundError("Module 'keyboard' not found: not installed.")
+                else:
+                    try:
+                        __import__("keyboard").write(indent_space * " ")
+                    except:
+                        raise ModuleNotFoundError("Module 'keyboard' not found: not installed.")
+            del indent_space
 except KeyboardInterrupt:
     __import__("sys").exit()
-except ModuleNotFoundError:
+except ModuleNotFoundError as e:
+    print(e)
     __import__("sys").exit()
 except Exception as e:
     print(f"Error: {e}")
