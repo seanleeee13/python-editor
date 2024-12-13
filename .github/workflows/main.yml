@@ -1,0 +1,29 @@
+name: Python package
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install keyboard pyinstaller
+    - name: Compile with pyinstaller
+      run: |
+        pyinstaller python_editor.spec
+        rmdir build /s /q
+        copy dist/python_editor.exe
+        rmdir dist /s /q

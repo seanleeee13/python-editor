@@ -1,5 +1,9 @@
 # python-editor change log
 
+## v.1.1.5 (on development)
+
+- `utils` folder deleted
+
 ## v.1.1.4
 
 - `docs` folder deleted
