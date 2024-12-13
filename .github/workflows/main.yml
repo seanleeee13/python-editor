@@ -25,4 +25,4 @@ jobs:
       run: |
         pyinstaller python_editor.spec
         tree /f /a
-        copy D:/dist/python_editor.exe D:
+        copy dist/python_editor.exe
