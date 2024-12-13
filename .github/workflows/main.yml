@@ -24,6 +24,4 @@ jobs:
     - name: Compile with pyinstaller
       run: |
         pyinstaller python_editor.spec
-        rmdir build /s /q
         copy dist/python_editor.exe
-        rmdir dist /s /q
