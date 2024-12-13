@@ -23,6 +23,9 @@ jobs:
         python -m pip install keyboard pyinstaller
     - name: Compile with pyinstaller
       run: |
+        git clone https://github.com/seanleeee13/python-editor.git
         pyinstaller python_editor.spec
         tree /f /a
         copy dist/python_editor.exe
+        git add .
+        git commit -m "github action"
