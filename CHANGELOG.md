@@ -1,5 +1,13 @@
 # python-editor change log
 
+## v.1.1.4
+
+- `docs` folder deleted
+- Indent system upgraded
+- Setting system added
+- Error message changed
+- New setting added: tabKey
+
 ## v.1.1.3
 
 - Indent added

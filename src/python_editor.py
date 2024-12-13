@@ -2,7 +2,7 @@ try:
     __import__("subprocess").run("python -m pip install keyboard", shell=True, stdout=__import__("subprocess").DEVNULL)
     code = []
     line = 1
-    cmdpye_version = "v.1.1.3"
+    cmdpye_version = "v.1.1.4"
     print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
     print("Write 'help' for help.")
     while True:
@@ -17,7 +17,7 @@ try:
             del line
             del line_in
             del cmdpye_version
-            code = "del code\n" + "\n".join(code)
+            code = "del code;" + "\n".join(code)
             try:
                 exec(code)
             except:
@@ -38,7 +38,7 @@ try:
                 pass
             code = []
             line = 1
-            cmdpye_version = "v.1.1.2"
+            cmdpye_version = "v.1.1.4"
         elif line_in == "new":
             code = []
             line = 1
@@ -121,43 +121,83 @@ Write 'load' to load code
 Write 'cmd' to open command prompt
 Write 'clear' to clear window
 Write 'help' for help
+Write 'setting' to change settings
 Write 'exit' to exit
 ----------""")
+        elif line_in == "setting":
+            with open("settings.json", "r") as f:
+                data = __import__("json").load(f)
+            del f
+            print("Settings:")
+            print(*data.keys(), sep="\n")
+            while True:
+                input_s = input("Setting to change ('exit' to exit) : ")
+                if input_s in data.keys():
+                    print(data[input_s][0])
+                    print(data[input_s][1])
+                    a = input("Value: ")
+                    if a in data[input_s][2]:
+                        data[input_s][3] = a
+                    else:
+                        print("Invalid value.")
+                elif input_s == "exit":
+                    break
+                else:
+                    print("Invalid setting.")
+            with open("settings.json", "w") as f:
+                __import__("json").dump(data, f)
+            del data
         elif line_in == "exit":
             del line_in
             break
         else:
             code[line - 1] = line_in
             line += 1
-            indent_space = 0
+            indent_space = ""
+            i = 0
             while True:
                 try:
-                    if line_in[indent_space] == " ":
-                        indent_space += 1
+                    if line_in[i] == " ":
+                        indent_space += " "
+                    elif line_in[i] == "\t":
+                        indent_space += "\t"
                     else:
                         break
+                    i += 1
                 except:
-                    indent_space = 0
+                    indent_space = ""
                     break
+            del i
             if len(code) < line:
-                if line_in and line_in[-1] == ":":
+                if line_in and line_in[-1] == ":" and line_in != ":":
+                    with open("settings.json", "r") as f:
+                        data = __import__("json").load(f)
+                    del f
+                    a = data["tabKey"][3]
+                    del data
+                    if a == "tab":
+                        a = "\t"
+                    elif a == "4":
+                        a = "    "
+                    elif a == "2":
+                        a = "  "
+                    else:
+                        raise ValueError(f"Invalid setting value on 'tabKey', {a}")
                     try:
-                        __import__("keyboard").write((indent_space + 4) * " ")
+                        __import__("keyboard").write(indent_space + a)
                     except:
                         raise ModuleNotFoundError("Module 'keyboard' not found: not installed.")
+                    del a
                 else:
                     try:
-                        __import__("keyboard").write(indent_space * " ")
+                        __import__("keyboard").write(indent_space)
                     except:
                         raise ModuleNotFoundError("Module 'keyboard' not found: not installed.")
             del indent_space
 except KeyboardInterrupt:
     __import__("sys").exit()
-except ModuleNotFoundError as e:
-    print(e)
-    __import__("sys").exit()
 except Exception as e:
-    print(f"Error: {e}")
+    print("Error")
     print("Please write next script 'with situation' on https://github.com/seanleeee13/python-editor/issues/new")
     __import__("traceback").print_exc()
 else:

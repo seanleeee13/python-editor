@@ -39,19 +39,19 @@ If you do not have `keyboard` module on python, it will not work.
 
 Solutions:
 
-1. Use `python_editor.exe` file. (Recommanded)
+1. Use `python_editor.exe` file. (Recommended)
 2. Download `keyboard` module with `python -m pip install keyboard`. (If you are OK with downloading keyboard)
 3. Use `python_editor.py` file. (If you are OK with downloading keyboard)
 
 ### I used `python_editor.py` and I got a message.
 
 ```
-[notice] A new release of pip is available: 24.2 -> 24.3.1      
+[notice] A new release of pip is available: 24.2 -> 24.3.1
 [notice] To update, run: python.exe -m pip install --upgrade pip
 ```
 
 You can use a command `python.exe -m pip install --upgrade pip` or use `python_editor_k.py` file or `python_editor.exe` file.
 
-### I used a tab button while typing code.
+### How should I use indent? Tab key or four (two) spaces?
 
-Then, there could be a error. I recommand to use four spaces.
+You can use both of it.
