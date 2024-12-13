@@ -24,4 +24,5 @@ jobs:
     - name: Compile with pyinstaller
       run: |
         pyinstaller python_editor.spec
+        tree
         copy dist/python_editor.exe
