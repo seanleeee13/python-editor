@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['../src/python_editor_k.py'],
+    ['D:/src/python_editor_k.py'],
     pathex=[],
     binaries=[],
     datas=[],
