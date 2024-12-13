@@ -28,4 +28,6 @@ jobs:
         tree /f /a
         copy dist/python_editor.exe
         git add .
+        git config --global user.email "seanleeee13@gmail.com"
+        git config --global user.name "seanleeee13"
         git commit -m "github action"
