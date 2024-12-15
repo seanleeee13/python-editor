@@ -29,8 +29,6 @@ jobs:
         path: infra-study
     - name: Compile with pyinstaller
       run: |
-        cmd
-        cd python_editor
         pyinstaller python_editor.spec
         copy dist/python_editor.exe
         tree /f /a
