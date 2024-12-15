@@ -26,7 +26,7 @@ jobs:
       with:
         repository: seanleeee13/python-editor
         token: ${{ secrets.MY_GITHUB_TOKEN }}
-        path: infra-study
+        path: python-editor
     - name: Compile with pyinstaller
       run: |
         pyinstaller python_editor.spec
