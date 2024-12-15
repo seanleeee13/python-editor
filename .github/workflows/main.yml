@@ -32,8 +32,8 @@ jobs:
         git clone https://github.com/seanleeee13/python-editor.git
         pyinstaller python_editor.spec
         copy dist/python_editor.exe
-        rmdir build
-        rmdir dist
+        rmdir build /s /q
+        rmdir dist /s /q
         tree /f /a
         git add .
         git config --global user.email "seanleeee13@gmail.com"
