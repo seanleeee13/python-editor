@@ -1,4 +1,4 @@
-# python-editor v.1.1.3
+# python-editor v.1.1.4
 
 This project is command prompt python editor.
 
