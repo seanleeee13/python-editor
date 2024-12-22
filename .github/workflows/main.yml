@@ -12,7 +12,7 @@ jobs:
       matrix:
         python-version: ["3.13"]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
@@ -21,12 +21,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install keyboard pyinstaller
-    - name: Repository checkout
-      uses: actions/checkout@v2
-      with:
-        repository: seanleeee13/python-editor
-        token: ${{ secrets.MY_GITHUB_TOKEN }}
-        path: python-editor
     - name: Compile with pyinstaller
       run: |
         pyinstaller python_editor.spec
