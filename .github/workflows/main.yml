@@ -4,6 +4,7 @@ on:
     branches: [ "main" ]
     tags-ignore:
     - compiled by github action
+    - action-ignore*
 jobs:
   build:
     runs-on: windows-latest
