@@ -1,1 +1,1 @@
-{"tabKey": ["Basic tab key.", "'tab': '\t'\n'4': '    '\n'2': '  '", ["tab", "4", "2"], "tab"]}
+{"indent": ["Basic indent.", "'tab': tab key\n'4': four spaces\n'2': two spaces", ["tab", "4", "2"], "tab"]}

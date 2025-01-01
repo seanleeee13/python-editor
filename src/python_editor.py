@@ -1,8 +1,7 @@
 try:
-    __import__("subprocess").run("python -m pip install keyboard", shell=True, stdout=__import__("subprocess").DEVNULL)
     code = []
     line = 1
-    cmdpye_version = "v.1.1.4"
+    cmdpye_version = "v.1.1.5"
     print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
     print("Write 'help' for help.")
     while True:
@@ -17,7 +16,7 @@ try:
             del line
             del line_in
             del cmdpye_version
-            code = "del code;" + "\n".join(code)
+            code = "\n".join(code)
             try:
                 exec(code)
             except:
@@ -38,22 +37,21 @@ try:
                 pass
             code = []
             line = 1
-            cmdpye_version = "v.1.1.4"
+            cmdpye_version = "v.1.1.5"
         elif line_in == "new":
             code = []
             line = 1
             print("----------")
-        elif line_in == "line":
-            temp = input("Line number, 'next' or 'prev': ")
+        elif __import__("re").fullmatch(r"line [0-9]*", line_in) or line_in == "line prev" or line_in == "line next":
+            temp = line_in[5:]
             try:
                 temp = int(temp)
             except:
                 pass
             if temp == "next":
                 if len(code) == line:
-                    print("Line number error.")
-                else:
-                    line += 1
+                    code.append("")
+                line += 1
             elif temp == "prev":
                 if line == 1:
                     print("Line number error.")
@@ -65,25 +63,29 @@ try:
                     print("Line number error.")
                 else:
                     line = temp
-            else:
-                print("Line number error.")
             del temp
         elif line_in == "clear":
+            us = False
             if __import__("platform").system().lower() == "windows":
                 __import__("subprocess").run("cls", shell=True)
             elif __import__("platform").system().lower() == "linux" or __import__("platform").system().lower() == "darwin":
                 __import__("subprocess").run("clear", shell=True)
-            print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
-            print("Write 'help' for help.")
-            code = []
-            line = 1
+            else:
+                print("Unsupported platform.")
+                us = True
+            if not us:
+                print(f"Command Prompt Python Editor {cmdpye_version} (python v.{__import__("platform").python_version()})")
+                print("Write 'help' for help.")
+                code = []
+                line = 1
         elif line_in == "cmd":
+            print("Write 'exit' to exit.")
             while True:
                 command = input(__import__("os").getcwd() + "> ")
                 if command == "exit" or command[:5] == "exit ":
                     break
                 __import__("subprocess").run(command, shell=True)
-            __import__("subprocess").run("python -m pip install keyboard", shell=True, stdout=__import__("subprocess").DEVNULL)
+            del command
             print("----------")
         elif line_in == "save":
             from tkinter import filedialog
@@ -94,6 +96,7 @@ try:
                     f.writelines([i + "\n" for i in code[:-1]])
                 else:
                     f.writelines([i + "\n" for i in code])
+            del f
             print("----------")
             code = []
             line = 1
@@ -107,6 +110,7 @@ try:
                 with open(filename, "r", encoding="utf-8") as f:
                     code = f.readlines()
                     line = len(code) + 1
+                del f
                 for i, l in enumerate(code):
                     code[i] = l.strip()
                     print("%3d | %s" % (i + 1, l), end="")
@@ -121,8 +125,12 @@ Write 'load' to load code
 Write 'cmd' to open command prompt
 Write 'clear' to clear window
 Write 'help' for help
+Write 'line [line number]',
+'line prev', or 'line next' to move line
 Write 'setting' to change settings
 Write 'exit' to exit
+Use 'code' variable while coding to get the whole code
+exec(code) makes RecursionError
 ----------""")
         elif line_in == "setting":
             with open("settings.json", "r") as f:
@@ -146,7 +154,10 @@ Write 'exit' to exit
                     print("Invalid setting.")
             with open("settings.json", "w") as f:
                 __import__("json").dump(data, f)
+            del f
             del data
+            del input_s
+            del a
         elif line_in == "exit":
             del line_in
             break
@@ -173,7 +184,7 @@ Write 'exit' to exit
                     with open("settings.json", "r") as f:
                         data = __import__("json").load(f)
                     del f
-                    a = data["tabKey"][3]
+                    a = data["indent"][3]
                     del data
                     if a == "tab":
                         a = "\t"
@@ -182,7 +193,7 @@ Write 'exit' to exit
                     elif a == "2":
                         a = "  "
                     else:
-                        raise ValueError(f"Invalid setting value on 'tabKey', {a}")
+                        raise ValueError(f"Invalid setting value on 'indent', {a}")
                     try:
                         __import__("keyboard").write(indent_space + a)
                     except:

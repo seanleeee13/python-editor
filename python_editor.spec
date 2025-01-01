@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['src/python_editor_k.py'],
+    ['src/python_editor.py'],
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=["subprocess", "platform", "keyboard", "sys", "traceback", "copy", "os"],
+    hiddenimports=["subprocess", "platform", "keyboard", "sys", "traceback", "copy", "os", "re", "json"],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

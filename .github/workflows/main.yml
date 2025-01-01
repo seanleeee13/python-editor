@@ -25,7 +25,6 @@ jobs:
       run: |
         pyinstaller python_editor.spec
         copy dist/python_editor.exe
-        tree /f /a
         git add .
         git config --global user.email "seanleeee13@gmail.com"
         git config --global user.name "seanleeee13"
